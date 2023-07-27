@@ -23,6 +23,6 @@ services:
 #     name: mysql-db-volume
 networks: 
   mysql_net:
-    name: mysql_net
+    name: mysql-net
       
  
