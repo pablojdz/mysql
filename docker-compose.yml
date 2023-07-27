@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    volumes: 
+      #- ./db/script:/docker-entrypoint-initdb.d
+      #- mysql-db-volume:/var/lib/mysql
+      - ./mysql-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "P@ssw0rd"
+      MYSQL_USER: "pablo"
+      MYSQL_PASSWORD: "P@ssw0rd"
+      MYSQL_DATABASE: "InventoryDW"
+    ports:
+      - "3306:3306"
+    networks: 
+      - mysql_net
+# volumes:
+#   mysql-db-volume:
+#     name: mysql-db-volume
+networks: 
+  mysql_net:
+    name: mysql_net
+      
+ 
